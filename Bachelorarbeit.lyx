@@ -1,17 +1,22 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass scrreprt
 \begin_preamble
-% verschieden Symbole, Zeichen wie (c), €
-\usepackage{textcomp,units}
+
+\usepackage{textcomp,units} % verschiedene Symbole, Zeichen wie (c), €
 
 % Mehr Platz zwischen Tabelle und Untertitel
 \usepackage{caption}
-\captionsetup[table]{skip=10pt}
+\captionsetup[table]{skip=12pt}
 
-%Kapitelzahl sehr groß
+% \vspace*{2.3\baselineskip} = ORIGINAL
+\renewcommand*{\chapterheadstartvskip}{\vspace*{0.8\baselineskip}}% Abstand vor Kapitel einstellen
+
+% Kapitelzahl sehr groß
 \makeatletter% siehe De-TeX-FAQ 
  \renewcommand*{\chapterformat}{% 
    \begingroup% damit \unitlength-Änderung lokal bleibt 
@@ -20,13 +25,13 @@
        \setlength{\fboxsep}{0pt} 
        %\put(0,0){\framebox(20,40){}}% 
        %\put(0,20){\makebox(20,20){\rule{20\unitlength}{20\unitlength}}}% 
-       \put(10,15){\line(1,0){\dimexpr 
+       \put(13,15){\line(1,0){\dimexpr 
            \textwidth-20\unitlength\relax\@gobble}}% 
-       \put(0,0){\makebox(10,20)[r]{% 
-           \fontsize{28\unitlength}{28\unitlength}\selectfont\thechapter 
+       \put(0,0){\makebox(10,25)[r]{% 
+           \fontsize{22\unitlength}{28\unitlength}\selectfont\thechapter 
            \kern-.05em% Ziffer in der Zeichenzelle nach rechts schieben 
          }}% 
-       \put(10,15){\makebox(\dimexpr 
+       \put(10,14){\makebox(\dimexpr 
            \textwidth-20\unitlength\relax\@gobble,\ht\strutbox\@gobble)[l]{% 
              \ \normalsize\color{black}\chapapp~\thechapter\autodot 
            }}% 
@@ -47,7 +52,7 @@
 \ofoot[\pagemark]{\pagemark}
 
 
-%Kurzfassung und Abstract (englisch) auf eine Seite
+% Kurzfassung und Abstract (englisch) auf eine Seite
 \renewenvironment{abstract}{
     \@beginparpenalty\@lowpenalty
       \begin{center}
@@ -58,10 +63,8 @@
     \par
 }
 
-
-
 % schönerer Blocksatz!!
-\usepackage{microtype}
+%\usepackage{microtype}      % wegen Fehler deaktiviert 
 
 \usepackage{ifpdf} % part of the hyperref bundle
 \ifpdf % if pdflatex is used
@@ -83,8 +86,8 @@
    \clearpage
    \pagenumbering{arabic}}
 
-%Bezeichungen anpassen
-%Babelpaket muß zuvor geladen werden
+% Bezeichungen anpassen
+% Babelpaket muß zuvor geladen werden
 %\usepackage[ngerman]{babel}
 \addto\captionsngerman{ 
 \renewcommand{\figurename}{Abb.}% 
@@ -104,7 +107,7 @@
   pdfsubject={LyX-documentation about figures, tables, floats, notes, and boxes},
   pdfkeywords={LyX, Tables, Figures, Floats, Boxes, Notes}]{hyperref}
 
-%mehr Platz zwischen Überschrift und Tabelle
+% mehr Platz zwischen Überschrift und Tabelle
 \newcommand{\@ldtable}{}
 \let\@ldtable\table
 \renewcommand{\table}{ %
@@ -113,17 +116,19 @@
                  \setlength{\belowcaptionskip}{\@tempdima} %
                  \@ldtable}
 
-%In dieser Arbeit wird auf die Nomenklatur als Abkürzungsverzeichnis verzichtet. Bei Wunsch wieder aktivieren.
-%Nomenklatur als Abkürzungsverzeichnis verwenden
+% In dieser Arbeit wird auf die Nomenklatur als Abkürzungsverzeichnis verzichtet. Bei Wunsch wieder aktivieren.
+% Nomenklatur als Abkürzungsverzeichnis verwenden
 %\renewcommand{\nomname}{Abkürzungsverzeichnis}
 %\renewcommand{\nomlabelwidth}{20mm}
 
-%Nomenklatur als Glossar verwenden
-%Nur Noetig wenn auch Glossar verwendet wird.
+% Nomenklatur als Glossar verwenden
+% Nur Noetig wenn auch Glossar verwendet wird.
 \renewcommand{\nomname}{Glossar}
 
-%Farbe für Programmcode festlegen
-\definecolor{lightgray}{rgb}{0.8,0.8,0.8}
+% Farben für Programmcode festlegen
+%               weiß wäre:     1.0,  1.0,  1.0  
+\definecolor{lightgray}{rgb}  {0.9,  0.9,  0.9  }
+\definecolor{green(en)}{rgb}  {0.0,  0.5,  0.0  }
 \end_preamble
 \options pointlessnumbers, abstracton, headsepline,
 \use_default_options true
@@ -135,16 +140,18 @@ theorems-ams
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family sfdefault
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 120
-\font_tt_scale 100
+\font_sf_scale 120 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -186,20 +193,27 @@ theorems-ams
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Stichwortverzeichnis
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 2.5cm
 \topmargin 2.5cm
+\rightmargin 2.5cm
 \bottommargin 2.5cm
 \secnumdepth 2
 \tocdepth 2
 \paragraph_separation skip
 \defskip medskip
-\quotes_language german
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
+\listings_params "language=C,keywordstyle={\color{blue}\textbf},commentstyle={\color{green(en)}\itshape},emphstyle={\color{red}\textbf},breaklines=true,basicstyle={\ttfamily},stringstyle={\color{magenta}},identifierstyle={\color{blue}},columns=fullflexible"
 \bullet 2 0 9 -1
 \tracking_changes false
 \output_changes false
@@ -225,6 +239,10 @@ titlepage
 \end_inset
 
 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -232,7 +250,7 @@ titlepage
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
@@ -250,7 +268,7 @@ titlepage
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename images/Logo_OTH_Regensburg.eps
+	filename images/Logo_OTH_Regensburg.pdf
 	lyxscale 50
 	height 3cm
 
@@ -269,7 +287,7 @@ titlepage
 \begin_layout Plain Layout
 
 \size large
-Fakultät Informatik / Mathematik
+Fakultät XY
 \size default
 
 \begin_inset space \hspace{}
@@ -372,7 +390,7 @@ Fakultät Informatik / Mathematik
 
 \series bold
 \size larger
-Bachelorarbeit
+Dokumentation / Bachelorarbeit
 \end_layout
 
 \begin_layout Standard
@@ -380,7 +398,7 @@ Bachelorarbeit
 \align left
 
 \size large
-Der Titel deiner Bachelorarbeit mit super tollem langem Text
+Der Titel deiner Arbeit mit super tollem langem Text
 \end_layout
 
 \begin_layout Standard
@@ -396,8 +414,9 @@ Der Titel deiner Bachelorarbeit mit super tollem langem Text
 
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="11" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<lyxtabular version="3" rows="10" columns="3">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row>
@@ -424,6 +443,15 @@ Max Mustermann
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 <row>
 <cell alignment="left" valignment="top" usebox="none">
@@ -440,6 +468,15 @@ Max Mustermann
 
 \begin_layout Plain Layout
 Matrikelnummer: 1234567
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -464,18 +501,7 @@ Studiengang: Allgemeine Informatik
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -487,6 +513,44 @@ OTH Regensburg
 </row>
 <row>
 <cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -526,17 +590,6 @@ Prof.
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -568,17 +621,6 @@ Prof.
 
 \end_inset
 </cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -590,6 +632,44 @@ OTH Regensburg
 </cell>
 </row>
 <row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
@@ -641,9 +721,22 @@ today
 
 \end_inset
 </cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 </row>
 </lyxtabular>
 
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -659,9 +752,6 @@ today
 \end_layout
 
 \begin_layout Standard
-\begin_inset space ~
-\end_inset
-
 
 \end_layout
 
@@ -707,7 +797,7 @@ Die vorliegende Arbeit wurde bisher keiner anderen Prüfungsbehörde vorgelegt
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
-<features rotate="0" tabularvalignment="middle" tabularwidth="15cm">
+<features tabularvalignment="middle" tabularwidth="15cm">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <row>
@@ -771,27 +861,6 @@ Max Mustermann
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace 17.1mm
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \noindent
 \align left
 
@@ -801,8 +870,8 @@ Sperrvermerk
 \end_layout
 
 \begin_layout Standard
-Die vorliegende Bachelorarbeit enthält vertrauliche Informationen der Firma
- [[MUSTERFIRMA]], die der Geheimhaltung unterliegen.
+Die vorliegende Arbeit enthält vertrauliche Informationen der Firma [[MUSTERFIRM
+A]], die der Geheimhaltung unterliegen.
  Veröffentlichungen oder Vervielfältigungen der Bachelorarbeit - auch nur
  auszugsweise - sind ohne ausdrückliche Genehmigung der Firma [[MUSTERFIRMA]]
  nicht gestattet.
@@ -811,20 +880,6 @@ Die vorliegende Bachelorarbeit enthält vertrauliche Informationen der Firma
  Alle Rechte zum Erwerb und zur Anmeldung gewerblicher Schutzrechte, insbesonder
 e zur Anmeldung von Patenten, Gebrauchsmustern und/oder Geschmacksmustern
  sind der Firma [[MUSTERFIRMA]] vorbehalten.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset space ~
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -844,13 +899,13 @@ Kurzfassung
 \end_layout
 
 \begin_layout Standard
-Dieses Beispiel soll ein paar Tipps geben, wie man eine schöne Bachelorarbeit
- schreibt.
+Dieses Beispiel soll ein paar Tipps geben, wie man eine schöne (Bachelor-)
+ Arbeit schreibt.
  Ich selbst habe mit dieser Vorlage bereits drei Arbeiten geschrieben und
  es gab keine Beanstandungen.
  Wichtigster Punkt aber zuvor: Fragt euren betreuenden Professor ob das
  Layout so passt.
- Dieser Entscheidet schlussendlich über eure Note und sollte auch mit dem
+ Dieser entscheidet schlussendlich über eure Note und sollte auch mit dem
  Layout zufrieden sein.
 \end_layout
 
@@ -887,7 +942,7 @@ ACHTUNG: Hier am Ende noch die richtige Seite einstellen! Sonst passt die
 \end_layout
 
 \begin_layout Plain Layout
-!
+Wenn hier {page} {7} anstatt 6 steht, dann wird Seite vi übersprungen! (Warum??)
 \end_layout
 
 \end_inset
@@ -910,7 +965,7 @@ pagenumbering{roman}
 
 
 \backslash
-setcounter{page}{7}
+setcounter{page}{4}
 \end_layout
 
 \end_inset
@@ -924,24 +979,11 @@ setcounter{page}{7}
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset FloatList table
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
 
@@ -966,6 +1008,16 @@ pagenumbering{arabic}
 
 \begin_layout Chapter
 Einführung
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+https://golatex.de/abstand-vor-chapter-verkleinern-t7716.html
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -978,7 +1030,9 @@ Im Vorspann könnt ihr verschiedene Listen sehen.
 \end_layout
 
 \begin_layout Itemize
-Ehrenwörtliche Erklärung (nach Guttenberg wohl pflicht)
+Ehrenwörtliche Erklärung (nach Guttenberg wohl pflicht).
+ Rechtschreibprüfung (F7) sollte pflicht finden.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -988,8 +1042,8 @@ Sperrvermerk: Eigentlich nur nötig wenn von der Firma verlangt wird.
 \end_layout
 
 \begin_layout Itemize
-Kurzfassung: Die Kurzfassung ist eigentlich Pflicht.
- Manche Betreuer möchten, dss die Kurzfassung auch in Englisch verfasst
+Kurzfassung: Die Kurzfassung ist eigentlich Pflicht bei Bachelorarbeiten.
+ Manche Betreuer möchten, dass die Kurzfassung auch in Englisch verfasst
  wird.
 \end_layout
 
@@ -1011,7 +1065,7 @@ Abschnitt
 \end_layout
 
 \begin_layout Standard
-Einfach mal um zu zeigen, wie es im Inhaltsverzeichnis aussieht.
+Einfach zum Zeigen, wie es im Inhaltsverzeichnis aussieht.
 \end_layout
 
 \begin_layout Section
@@ -1031,16 +1085,8 @@ Ein Unterunterabschnitt
 \end_layout
 
 \begin_layout Standard
-Wie ihr seht wird ein Unterunterabschnitt nicht mehr in die Auflistung aufgenomm
-en.
- Dies kann unter 
-\begin_inset Quotes gld
-\end_inset
-
-Dokument --> Einstellungen --> Nummerierung & Inhaltsverzeichnis
-\begin_inset Quotes grd
-\end_inset
-
+Ein Unterunterabschnitt erscheint nicht in der Auflistung.
+ Dies kann unter `Dokument → Einstellungen → Nummerierung & Inhaltsverzeichnis´
  angepasst werden.
 \end_layout
 
@@ -1049,7 +1095,7 @@ Beispiel für Bilder
 \end_layout
 
 \begin_layout Standard
-Hier testen wir mal ein Bild und wie dieses Dargestellt wird
+Hier testen wir mal ein Bild und wie dieses dargestellt wird
 \end_layout
 
 \begin_layout Section
@@ -1140,6 +1186,7 @@ Tabelle mit Untertitel
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -1149,7 +1196,7 @@ status open
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="4">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="middle" width="3cm">
 <column alignment="center" valignment="top" width="2cm">
 <column alignment="left" valignment="top" width="3cm">
@@ -1159,7 +1206,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-titelzeile
+Titelzeile
 \end_layout
 
 \end_inset
@@ -1262,14 +1309,6 @@ Aufzählungen
 
 \begin_layout Itemize
 2
-\end_layout
-
-\begin_layout Itemize
-3
-\end_layout
-
-\begin_layout Itemize
-4
 \end_layout
 
 \begin_layout Plain Layout
@@ -1380,12 +1419,15 @@ Zwei Zeilen zusammenfassen
 
 \begin_layout Plain Layout
 Genau wie bei Bildern sollte auch der Tabellenuntertitel die Tabelle grob
- beschreiben 
+ beschreiben.
+ Einstellungen dieser Tabelle: `Hier, auf jeden Fall´, sonst verrutschen
+ nur die Titel der Abschnitte 2.1.1 + 2.2 auf die vorherige Seite.
+ 
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-Dies ist wieder der Kurztitel zur Tabelle
+Kurztitel zur Tabelle, fürs Tabellenverzeichnis
 \end_layout
 
 \end_inset
@@ -1395,10 +1437,6 @@ Dies ist wieder der Kurztitel zur Tabelle
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1423,7 +1461,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset listings
-lstparams "backgroundcolor={\color{lightgray}},basicstyle={\normalsize\sffamily},breaklines=true,frame={leftline,bottomline,rightline,topline},language=C,numbers=left,showstringspaces=false,xleftmargin=15pt"
+lstparams "language=C,numbers=left,basicstyle={\footnotesize\ttfamily},breaklines=true,showstringspaces=false,tabsize=4,backgroundcolor={\color{lightgray}},frame={leftline,bottomline,rightline,topline},xleftmargin=15pt"
 inline false
 status open
 
@@ -1439,50 +1477,55 @@ main()
 
 \begin_layout Plain Layout
 
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+int i;
+\end_layout
+
+\begin_layout Plain Layout
+
+for (i = 0; i<=2; i++)
+\end_layout
+
+\begin_layout Plain Layout
+
 	{
 \end_layout
 
 \begin_layout Plain Layout
 
-        int i;
+	fork();
 \end_layout
 
 \begin_layout Plain Layout
 
-        for (i = 0; i<=2; i++)
+	setvbuf(stdout, NULL, _IOLBF, 0); //(Stream, Pufferangabe, Puffertyp, Puffergro
+esse)
 \end_layout
 
 \begin_layout Plain Layout
 
-        {
-\end_layout
-
-\begin_layout Plain Layout
-
-        fork();
-\end_layout
-
-\begin_layout Plain Layout
-
-        setvbuf(stdout, NULL, _IOLBF, 0); //(Stream, Pufferangabe, Puffertyp,
- Puffergroesse)
-\end_layout
-
-\begin_layout Plain Layout
-
-        printf("PID=%6d, i=%d
+	printf("PID=%6d, i=%d
 \backslash
 n", getpid(), i);
 \end_layout
 
 \begin_layout Plain Layout
 
-        }
+	}
 \end_layout
 
 \begin_layout Plain Layout
 
-} 
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
 \end_layout
 
 \end_inset
@@ -1508,38 +1551,112 @@ Modifiziertes Programm mit setvbuf()
 \end_layout
 
 \begin_layout Standard
-Unter 
-\begin_inset Quotes gld
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+https://tex.stackexchange.com/questions/231658/lyx-code-tag-with-highlighting-for-
+c
+\end_layout
+
+\begin_layout Plain Layout
+http://latexcolor.com
+\end_layout
+
 \end_inset
 
-Dokument --> Einstellungen --> Latexvorspann
-\begin_inset Quotes grd
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Unter `Dokument → Einstellungen → ProgrammListings´ folgendes eingefügt,
+ macht die C-Syntax farbig:
+\end_layout
+
+\begin_layout Description
+language=C
+\end_layout
+
+\begin_layout Description
+keywordstyle={
+\backslash
+color{blue}
+\backslash
+textbf}
+\end_layout
+
+\begin_layout Description
+commentstyle={
+\backslash
+color{green(en)}
+\backslash
+itshape}
+\end_layout
+
+\begin_layout Description
+emphstyle={
+\backslash
+color{red}
+\backslash
+textbf}
+\end_layout
+
+\begin_layout Description
+breaklines=true
+\end_layout
+
+\begin_layout Description
+basicstyle={
+\backslash
+ttfamily}
+\end_layout
+
+\begin_layout Description
+stringstyle={
+\backslash
+color{magenta}}
+\end_layout
+
+\begin_layout Description
+identifierstyle={
+\backslash
+color{blue}}
+\end_layout
+
 \end_inset
 
- habe ich für die Hintergrundfarbe folgendes eingefügt:
+
+\end_layout
+
+\begin_layout Standard
+Unter `Dokument → Einstellungen → Latexvorspann´ habe ich für die Hintergrundfar
+be folgendes eingefügt:
 \end_layout
 
 \begin_layout Itemize
 
 \backslash
-definecolor{lightgray}{rgb}{0.8,0.8,0.8}
+definecolor{lightgray}{rgb} { 0.9, 0.9, 0.9 }
 \end_layout
 
 \begin_layout Standard
 Dies legt die Hintergrundfarbe fest.
- Sie kann natürlich nach belieben angepasst werden.
- Wenn ihr Rechtsklick auf das Programmlisting macht und dann unter 
-\begin_inset Quotes gld
-\end_inset
-
-Einstellungen --> Erweitert
-\begin_inset Quotes grd
-\end_inset
-
- geht, seht ihr einige Anpassungen die ich gemacht habe.
+ Sie kann natürlich nach Belieben angepasst werden.
+ Wenn ihr Rechtsklick auf das Programmlisting macht und dann unter `Einstellunge
+n → Erweitert´ geht, seht ihr einige Anpassungen die ich gemacht habe.
  Unter Anderem wird hier auch 15pt von links eingerückt, damit die Zeilennummern
  schön zum Fließtext passen.
- 
+\end_layout
+
+\begin_layout Itemize
+
+\backslash
+definecolor{green(en)}{rgb} {0.0, 0.5, 0.0 } // Farbe für Kommentare in C,
+ siehe oben commentstyle.
 \end_layout
 
 \begin_layout Chapter
@@ -1564,6 +1681,7 @@ n Buch das ich am Ende angeben muss.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Williams201205,Siegert200612"
+literal "true"
 
 \end_inset
 
@@ -1577,26 +1695,19 @@ Es ist meist nicht gern gesehen wenn man aus dem Internet zitiert, aber
 \begin_inset CommandInset citation
 LatexCommand cite
 key "wiki:42"
+literal "true"
 
 \end_inset
 
  Übrigens könnt ihr bei Wikipedia direkt an die Bibtex-Informationen kommen.
- Einfach Links im Menü unter 
-\begin_inset Quotes gld
-\end_inset
-
-Werkzeuge --> Seite zitieren
-\begin_inset Quotes grd
-\end_inset
-
-
+ Einfach Links im Menü unter `Werkzeuge → Seite zitieren´
 \end_layout
 
 \begin_layout Standard
-Gesetztestexte müssen zum Beispiel nicht zitiert werden.
+Gesetzestexte müssen zum Beispiel nicht zitiert werden.
  Hier reicht ein Verweis in der Fußnote
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Das hier ist die supertolle Fußnote, hier steht jetzt irgendwas von BGB
@@ -1633,9 +1744,9 @@ status open
 
 \begin_layout Plain Layout
 Ab hier folgt nun der Glossar.
- Manchmal ist das nicht nötig, dann muss es auch unter Dokumente --> Einstellung
-en --> Latex-Vorspann deaktivieren.
- Übrigens werden Lyx-Notizen im späteren Dokument nicht angezeigt
+ Manchmal ist dieser nicht nötig, dann muss er auch unter `Dokumente → Einstellu
+ngen → Latex-Vorspann´ deaktiviert werden.
+ Übrigens werden Lyx-Notizen im späteren Dokument nicht angezeigt.
 \end_layout
 
 \end_inset
@@ -1690,6 +1801,7 @@ addcontentsline{toc}{chapter}{Glossar}
 LatexCommand nomenclature
 symbol "APT"
 description "Advanced Packaging Tool (kurz. APT) ist ein Paketverwaltungssystem das z.B. bei Debian und Ubuntu eingesetzt wird. Das Paketverwaltungssystem stellt einen Großteil der für das Betriebssystem verfügbaren Programme und Erweiterungen bereit. Diese können durch den Benutzer meist in der Befehlszeile oder über eine grafische Oberfläche installiert und konfiguriert werden. "
+literal "true"
 
 \end_inset
 
@@ -1698,6 +1810,7 @@ description "Advanced Packaging Tool (kurz. APT) ist ein Paketverwaltungssystem 
 LatexCommand nomenclature
 symbol "API"
 description "Application Programming Interface (kurz API) ist eine Programmierschnittstelle die eine Anbindung von Außen an ein bestehendes System bietet. Die Schnittstelle wird vom Hersteller der Software zur Verfügung gestellt um Dritten die Möglichkeit eines Addons oder einer Erweiterung zu geben. Die Schnittstelle definiert dabei ein Standardformat und Standardbefehle."
+literal "true"
 
 \end_inset
 
@@ -1754,15 +1867,7 @@ Hier folgt nun das Literaturverzeichnis.
 
 \begin_layout Plain Layout
 Dieses wird automatisch erstellt.
- Zum bearbeiten der 
-\begin_inset Quotes gld
-\end_inset
-
-Literatur-Datenbank
-\begin_inset Quotes grd
-\end_inset
-
- verwende ich das Programm 
+ Zum bearbeiten der `Literatur-Datenbank´ verwende ich das Programm 
 \begin_inset Quotes gld
 \end_inset
 
